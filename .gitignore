@@ -1,0 +1,21 @@
+# Build output
+**/bin/
+**/obj/
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ASP.NET Core local settings
+StudentPortalApi/appsettings.Development.json
+StudentPortalApi/Properties/launchSettings.json
+
+# Node modules
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal | Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+    
+    <div class="auth-container">
+        <div class="auth-box">
+            <!-- Login Mode Toggle -->
+            <div class="auth-mode-toggle">
+                <button type="button" class="toggle-btn active" id="studentModeBtn" onclick="switchAuthMode('student')">Student Login</button>
+                <button type="button" class="toggle-btn" id="adminModeBtn" onclick="switchAuthMode('admin')">Admin Login</button>
+            </div>
+
+            <!-- STUDENT LOGIN SECTION -->
+            <div id="studentSection" class="auth-section active">
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form active">
+                    <div class="auth-header">
+                        <h2>Welcome Back</h2>
+                        <p>Enter your details to access your student portal.</p>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="loginEmail" placeholder="Email Address" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn-primary" id="loginBtn">Sign In <i class="fas fa-arrow-right"></i></button>
+                    <p class="switch-form">Don't have an account? <span onclick="toggleForms()">Sign Up</span></p>
+                    <div id="loginError" class="error-msg"></div>
+                </form>
+
+                <!-- Signup Form -->
+                <form id="signupForm" class="auth-form">
+                    <div class="auth-header">
+                        <h2>Create Account</h2>
+                        <p>Join the student portal to stay updated.</p>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="signupName" placeholder="Full Name" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="signupEmail" placeholder="Email Address" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="signupPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn-primary" id="signupBtn">Sign Up <i class="fas fa-arrow-right"></i></button>
+                    <p class="switch-form">Already have an account? <span onclick="toggleForms()">Sign In</span></p>
+                    <div id="signupError" class="error-msg"></div>
+                </form>
+            </div>
+
+            <!-- ADMIN LOGIN SECTION -->
+            <div id="adminSection" class="auth-section">
+                <form id="adminLoginForm" class="auth-form active">
+                    <div class="auth-header">
+                        <h2>Admin Login</h2>
+                        <p>Admin credentials required to access the admin panel.</p>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="adminUsername" placeholder="Username" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="adminPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn-primary" id="adminLoginBtn">Admin Sign In <i class="fas fa-arrow-right"></i></button>
+                    <div id="adminError" class="error-msg"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

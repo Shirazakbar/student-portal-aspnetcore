@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal | Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Shiraz's</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="active nav-tab" data-tab="home"><i class="fas fa-home"></i> Home</a>
+                <a href="#" class="nav-tab" data-tab="assignments"><i class="fas fa-tasks"></i> Assignments</a>
+                <a href="#" class="nav-tab" data-tab="videos"><i class="fas fa-video"></i> Videos</a>
+                <a href="#" class="nav-tab" data-tab="noticeboard"><i class="fas fa-bullhorn"></i> Noticeboard</a>
+                <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                <a href="#" onclick="logout()" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </aside>
+
+        <!-- Main Feed Area -->
+        <main class="feed-area">
+            <header class="feed-header">
+                <h2 id="tabTitle">Student Feed</h2>
+                <div class="user-info" id="userInfo">
+                    <span id="userName">User</span>
+                    <div class="avatar"><i class="fas fa-user-circle"></i></div>
+                </div>
+            </header>
+
+            <!-- Home Tab -->
+            <div class="tab-content active" id="home-tab">
+                <div class="create-post">
+                    <textarea id="postContent" placeholder="Share an update or ask a question..."></textarea>
+                    <div class="post-actions">
+                        <button class="btn-primary" id="submitPost"><i class="fas fa-paper-plane"></i> Post Update</button>
+                        <div id="postError" class="error-msg" style="margin-top:0;"></div>
+                    </div>
+                </div>
+
+                <div class="feed-list" id="feedList">
+                    <!-- Posts will be injected here via JS -->
+                </div>
+            </div>
+
+            <!-- Assignments Tab -->
+            <div class="tab-content" id="assignments-tab">
+                <div class="assignments-container" id="assignmentsContainer">
+                    <!-- Assignment boxes will be injected here -->
+                </div>
+            </div>
+
+            <!-- Videos Tab -->
+            <div class="tab-content" id="videos-tab">
+                <div class="videos-scroll-container">
+                    <div class="videos-horizontal-scroll" id="videosContainer">
+                        <!-- Video boxes will be injected here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Noticeboard Tab -->
+            <div class="tab-content" id="noticeboard-tab">
+                <div class="noticeboard-container">
+                    <div class="news-bulletin" id="noticeboardText">
+                        <!-- Notice text will scroll here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Assignment Details Popup -->
+        <div class="modal-overlay" id="assignmentModal" onclick="if(event.target.id === 'assignmentModal') closeAssignmentModal()">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <span class="modal-close" onclick="closeAssignmentModal()">&times;</span>
+                <h2 id="modalTitle">Assignment Details</h2>
+                <div id="modalDescription" class="modal-description">
+                    <!-- Details will be populated here -->
+                </div>
+                <button class="btn-primary" onclick="closeAssignmentModal()" style="width: 100%; margin-top: 1.5rem;">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/feed.js"></script>
+</body>
+
+</html>

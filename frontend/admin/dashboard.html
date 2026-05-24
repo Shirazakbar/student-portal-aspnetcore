@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | EduPortal</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Admin Portal</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#" id="navHome" class="active"><i class="fas fa-home"></i> Overview</a>
+                <a href="#" id="navNotices"><i class="fas fa-bullhorn"></i> Notices</a>
+                <a href="#" id="navVideos"><i class="fas fa-video"></i> Videos</a>
+                <a href="#" id="navAssignments"><i class="fas fa-tasks"></i> Assignments</a>
+                <a href="../main.html"><i class="fas fa-users"></i> Student View</a>
+                <a href="#" onclick="logout()" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </aside>
+
+        <main class="feed-area">
+            <header class="feed-header">
+                <div>
+                    <h2>Admin Dashboard</h2>
+                    <p id="adminSubtitle">Manage notices, videos, and assignments.</p>
+                </div>
+                <div class="user-info" id="userInfo">
+                    <span id="userName">Admin</span>
+                    <div class="avatar"><i class="fas fa-user-shield"></i></div>
+                </div>
+            </header>
+
+            <section id="sectionOverview">
+                <div class="create-post">
+                    <h3>Welcome, admin.</h3>
+                    <p>Use the sidebar to manage the portal content. Students cannot access these admin controls.</p>
+                </div>
+                <div class="feed-list" id="overviewCards" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:1rem;">
+                    <div class="post-card">
+                        <h4>Notices</h4>
+                        <p id="noticeCount">Loading...</p>
+                    </div>
+                    <div class="post-card">
+                        <h4>Videos</h4>
+                        <p id="videoCount">Loading...</p>
+                    </div>
+                    <div class="post-card">
+                        <h4>Assignments</h4>
+                        <p id="assignmentCount">Loading...</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sectionNotices" style="display:none;">
+                <div class="create-post">
+                    <h3>Create Notice</h3>
+                    <input id="noticeTitle" type="text" placeholder="Notice title" style="width:100%; margin-bottom:1rem; padding:1rem; border-radius:12px; border:1px solid var(--glass-border); background:rgba(0,0,0,0.2); color:white;" />
+                    <textarea id="noticeContent" placeholder="Notice content" style="width:100%; min-height:120px; padding:1rem; border-radius:12px; border:1px solid var(--glass-border); background:rgba(0,0,0,0.2); color:white; resize:vertical;"></textarea>
+                    <button class="btn-primary" id="createNoticeBtn" style="margin-top:1rem;">Create Notice</button>
+                    <div id="noticeMessage" class="error-msg"></div>
+                </div>
+                <div class="feed-list" id="noticeList"></div>
+            </section>
+
+            <section id="sectionVideos" style="display:none;">
+                <div class="create-post">
+                    <h3>Add Video</h3>
+                    <input id="videoTitle" type="text" placeholder="Video title" style="width:100%; margin-bottom:1rem; padding:1rem; border-radius:12px; border:1px solid var(--glass-border); background:rgba(0,0,0,0.2); color:white;" />
+                    <input id="videoUrl" type="text" placeholder="Optional video URL" style="width:100%; margin-bottom:1rem; padding:1rem; border-radius:12px; border:1px solid var(--glass-border); background:rgba(0,0,0,0.2); color:white;" />
+                    <textarea id="videoDescription" placeholder="Video description" style="width:100%; min-height:100px; padding:1rem; border-radius:12px; border:1px solid var(--glass-border); background:rgba(0,0,0,0.2); color:white; resize:vertical;"></textarea>
+                    <label style="display:block; margin-top:1rem; color:var(--text-secondary);">Optional upload</label>
+                    <input id="videoFile" type="file" style="width:100%; color:white;" />
+                    <button class="btn-primary" id="createVideoBtn" style="margin-top:1rem;">Add Video</button>
+                    <div id="videoMessage" class="error-msg"></div>
+                </div>
+                <div class="feed-list" id="videoList"></div>
+            </section>
+
+            <section id="sectionAssignments" style="display:none;">
+                <div class="create-post">
+                    <h3>Add Assignment</h3>
+                    <input id="assignmentTitle" type="text" placeholder="Assignment title" style="width:100%; margin-bottom:1rem; padding:1rem; border-radius:12px; border:1px solid var(--glass-border); background:rgba(0,0,0,0.2); color:white;" />
+                    <textarea id="assignmentDescription" placeholder="Assignment description" style="width:100%; min-height:100px; padding:1rem; border-radius:12px; border:1px solid var(--glass-border); background:rgba(0,0,0,0.2); color:white; resize:vertical;"></textarea>
+                    <input id="assignmentDueDate" type="datetime-local" style="width:100%; margin-top:1rem; margin-bottom:1rem; padding:1rem; border-radius:12px; border:1px solid var(--glass-border); background:rgba(0,0,0,0.2); color:white;" />
+                    <label style="display:block; margin-top:1rem; color:var(--text-secondary);">Optional attachment</label>
+                    <input id="assignmentFile" type="file" style="width:100%; color:white;" />
+                    <button class="btn-primary" id="createAssignmentBtn" style="margin-top:1rem;">Create Assignment</button>
+                    <div id="assignmentMessage" class="error-msg"></div>
+                </div>
+                <div class="feed-list" id="assignmentList"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/admin.js"></script>   <!--   <-----------comment this line to test plz -->
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal | Profile</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>EduPortal</span>
+            </div>
+            <nav class="nav-links">
+                <a href="main.html" class="nav-tab"><i class="fas fa-home"></i> Home</a>
+                <a href="#" class="nav-tab" data-tab="assignments" onclick="navigateTab(event, 'assignments')"><i class="fas fa-tasks"></i> Assignments</a>
+                <a href="#" class="nav-tab" data-tab="videos" onclick="navigateTab(event, 'videos')"><i class="fas fa-video"></i> Videos</a>
+                <a href="#" class="nav-tab" data-tab="noticeboard" onclick="navigateTab(event, 'noticeboard')"><i class="fas fa-bullhorn"></i> Noticeboard</a>
+                <a href="profile.html" class="active"><i class="fas fa-user"></i> Profile</a>
+                <a href="#" onclick="logout()" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </aside>
+
+        <!-- Main Profile Area -->
+        <main class="feed-area">
+            <header class="feed-header">
+                <h2>Your Profile</h2>
+            </header>
+
+            <div class="create-post" style="max-width: 500px; margin: 0 auto; text-align: center;">
+
+                <div class="profile-pic-container" style="margin-bottom: 2rem;">
+                    <img id="currentProfilePic" src="https://via.placeholder.com/150" alt="Profile Picture"
+                        style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); margin-bottom: 1rem;">
+                    <div>
+                        <label for="profilePicInput" style="cursor: pointer; color: var(--primary); font-weight: 500;">
+                            <i class="fas fa-upload"></i> Upload New Picture
+                        </label>
+                        <input type="file" id="profilePicInput" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+
+                <div class="input-group" style="text-align: left;">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="newPassword" placeholder="New Password (optional)">
+                </div>
+
+                <button class="btn-primary" id="saveProfileBtn">Save Changes</button>
+                <div id="profileMessage" style="margin-top: 1rem; font-weight: 500;"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/profile.js"></script>
+    <script>
+        function logout() {
+            localStorage.removeItem('user');
+            window.location.href = 'index.html';
+        }
+
+        function navigateTab(event, tabName) {
+            event.preventDefault();
+            localStorage.setItem('selectedTab', tabName);
+            window.location.href = 'main.html';
+        }
+    </script>
+</body>
+
+</html>

@@ -18,3 +18,11 @@
 - `bin/` and `obj/` directories are generated build outputs and should not be committed.
 - Local development configuration files are ignored by `.gitignore`.
 - Keep database credentials and local secrets out of source control.
+
+
+## 🚀 Live Demo
+[Click here to view the Live Site](https://student-portal-aspnetcore.onrender.com/)
+
+> ⚠️ **Note on First Load:** This application is hosted on Render's free tier. 
+> If the page takes 60–90 seconds to load initially, the server is just waking 
+> up from sleep mode! Once awake, it will be lightning fast.

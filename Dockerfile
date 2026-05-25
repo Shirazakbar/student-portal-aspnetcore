@@ -2,8 +2,8 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
 WORKDIR /app
 
-# Copy the solution file and the API project folder into the container
-COPY "Student Portal.sln" ./
+# Using JSON array syntax to safely handle the space in the filename
+COPY ["Student Portal.sln", "./"]
 COPY StudentPortalApi/ ./StudentPortalApi/
 
 # Restore dependencies using the solution file

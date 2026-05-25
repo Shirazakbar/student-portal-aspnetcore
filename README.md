@@ -26,3 +26,10 @@
 > ⚠️ **Note on First Load:** This application is hosted on Render's free tier. 
 > If the page takes 60–90 seconds to load initially, the server is just waking 
 > up from sleep mode! Once awake, it will be lightning fast.
+
+## 🔑 Admin Login (For Testing)
+To easily check out the dashboard features without registering, use the default credentials below:
+* **Username:** `admin`
+* **Password:** `admin`
+
+> *Note: This is a portfolio piece/proof-of-concept rather than production software, so the authentication system has been kept simple on purpose to make testing friction-free.*

@@ -2,9 +2,10 @@
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build-env
 WORKDIR /app
 
-# Using JSON array syntax to safely handle the space in the filename
+# Copy the solution, API folder, AND the frontend folder
 COPY ["Student Portal.sln", "./"]
 COPY StudentPortalApi/ ./StudentPortalApi/
+COPY frontend/ ./StudentPortalApi/wwwroot/
 
 # Restore dependencies using the solution file
 RUN dotnet restore "Student Portal.sln"

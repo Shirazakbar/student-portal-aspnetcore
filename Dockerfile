@@ -1,5 +1,5 @@
-# Step 1: Use the official .NET SDK image to build the app
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
+# Step 1: Use the official .NET 9.0 SDK image to build the app
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build-env
 WORKDIR /app
 
 # Using JSON array syntax to safely handle the space in the filename
@@ -12,8 +12,8 @@ RUN dotnet restore "Student Portal.sln"
 # Build and publish a release from the project folder
 RUN dotnet publish StudentPortalApi/StudentPortalApi.csproj -c Release -o out
 
-# Step 2: Build the runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+# Step 2: Build the runtime image using .NET 9.0 ASP.NET
+FROM mcr.microsoft.com/dotnet/aspnet:9.0
 WORKDIR /app
 COPY --from=build-env /app/out .
 

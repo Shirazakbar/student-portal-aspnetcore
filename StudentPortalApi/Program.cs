@@ -32,7 +32,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseStaticFiles();
+//app.UseStaticFiles();
 
 app.UseCors("AllowAll");
 
@@ -41,5 +41,9 @@ app.UseMiddleware<StudentPortalApi.Middleware.AdminAuthorizationMiddleware>();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Enable serving static files (HTML, CSS, JS)
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
 app.Run();

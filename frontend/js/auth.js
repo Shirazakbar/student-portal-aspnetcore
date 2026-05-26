@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5275/api';   //Change this maybe?
+const API_URL = 'http://localhost:5000/api';   //Change this maybe?  ,,, if there are backend issues, change this port to whatever port ur server opens on Thank you
 
 // Switch between Student and Admin login modes
 function switchAuthMode(mode) {

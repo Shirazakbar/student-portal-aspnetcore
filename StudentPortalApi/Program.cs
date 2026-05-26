@@ -5,11 +5,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-// DATABASE CONFIGURATION
-// If running on Render, it will look for a production connection string or fallback to a local database.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+if (string.IsNullOrWhiteSpace(connectionString))
+{
+    throw new InvalidOperationException("Connection string 'DefaultConnection' is required. Set it in appsettings.json or via environment configuration.");
+}
+
 builder.Services.AddDbContext<StudentPortalContext>(options =>
     options.UseSqlServer(connectionString));
 
@@ -26,34 +30,22 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// ==========================================
-// CORRECTED HTTP REQUEST PIPELINE ORDER
-// ==========================================
-
-// 1. Configure OpenAPI/Swagger tools for development
+// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
 
-// 2. Only redirect to HTTPS locally to prevent Render redirect loops
-if (app.Environment.IsDevelopment())
-{
-    app.UseHttpsRedirection();
-}
+app.UseHttpsRedirection();
 
-// 3. Enable serving static files FIRST so the frontend files load immediately
-app.UseDefaultFiles();
 app.UseStaticFiles();
 
-// 4. Global Security Policy Configurations
 app.UseCors("AllowAll");
 
-// 5. Apply custom Admin Authorization middleware safely AFTER static files are served
 app.UseMiddleware<StudentPortalApi.Middleware.AdminAuthorizationMiddleware>();
+
 app.UseAuthorization();
 
-// 6. Map API Controller endpoints last so they can receive fetch requests
 app.MapControllers();
 
 app.Run();

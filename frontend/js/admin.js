@@ -1,4 +1,5 @@
-const API_URL = 'http://localhost:5275/api';
+//const API_URL = 'http://localhost:5275/api';
+const API_URL = 'http://localhost:5000/api';
 const adminSections = ['Overview', 'Notices', 'Videos', 'Assignments'];
 
 const userStr = localStorage.getItem('user');

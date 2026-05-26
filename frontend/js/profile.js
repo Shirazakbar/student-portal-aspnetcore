@@ -1,5 +1,5 @@
-const API_URL = 'http://localhost:5275/api';
-
+//const API_URL = 'http://localhost:5275/api';
+const API_URL = 'http://localhost:5000/api';
 const userStr = localStorage.getItem('user');
 if (!userStr) {
     window.location.href = 'index.html';

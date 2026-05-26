@@ -1,4 +1,5 @@
-const API_URL = 'http://localhost:5275/api';
+//const API_URL = 'http://localhost:5275/api';
+const API_URL = 'http://localhost:5000/api';
 
 // Authentication check
 const userStr = localStorage.getItem('user');

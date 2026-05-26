@@ -1,5 +1,4 @@
-const API_URL = '/api';
-//const API_URL = 'http://localhost:5275/api';   //Change this maybe?
+const API_URL = 'http://localhost:5275/api';   //Change this maybe?
 
 // Switch between Student and Admin login modes
 function switchAuthMode(mode) {
